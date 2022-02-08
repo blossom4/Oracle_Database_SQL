@@ -1,42 +1,41 @@
--- Number Function
--- 'dual' is virtual table
+-- 1.8 숫자함수
 
--- 1. Absoulte value
-select abs(-10) from dual;
+-- 1. 절대값
+SELECT  ABS(-10)
+FROM    DUAL;
 
--- 2. Get absoulte value of sal after cut the sal by 2000.
-select abs(sal - 2000)
-from emp;
+-- 2. 전 직원의 급여를 2000 삭감하고 삭감한 급여액의 절대값을 구한다.
+SELECT  ABS(SAL - 2000)
+FROM    EMP;
 
--- 3. Throw away below the decimal point.
-select floor(12.3456)
-from dual;
+-- 3. 내림.
+SELECT  FLOOR(12.3456)
+FROM    DUAL;
 
--- 4. Cut the 15% of sal whose sal more than 1500. 
---    However, if it is below the decimal point, then throw it away.
-select floor(sal * 0.85)
-from emp
-where sal >= 1500;
+-- 4. 급여가 1500 이상인 사원의 급여를 15% 삭감한다. (단, 일의자리에서 내린다.) 
+SELECT  FLOOR(SAL * 0.85)
+FROM    EMP
+WHERE   SAL >= 1500;
 
---5. Round off the number to the second decimal place.
-select round(12.3456) from dual;
-select round(12.3456, 2) from dual;
-select round(12.3456, -1) from dual;
+--5. 반올림
+SELECT  ROUND(12.3456),
+        ROUND(12.3456, 2),
+        ROUND(12.3456, -1)
+FROM    DUAL;
 
--- 6. Increase the 20% of sal whose sal 2000 or less.
---    However, round off the number from the hundred.
-select round(sal * 1.2, -2)
-from emp
-where sal <= 2000;
+-- 6.급여가 2000 이하인 사원들의 급여를 20% 인상한다. (단, 십의자리를 기준으로 반올림한다.)
+SELECT  ROUND(SAL * 1.2, -2)
+FROM    EMP
+WHERE   SAL <= 2000;
 
--- 7. Throw away below the decided number.
-select trunc(12.3456, -1)
-from dual;
+-- 7. 버림
+SELECT  TRUNC(12.3456, -1)
+FROM    DUAL;
 
--- 8. Throw away below the sal from the tenth.
-select trunc(sal, -2)
-from emp;
+-- 8. 전 직원의 급여를 십의자리를 기준으로 버린다.
+SELECT  TRUNC(SAL, -2)
+FROM    EMP;
 
--- 9. Get remainder.
-select mod(10, 3)
-from dual;
+-- 9. 나머지 구하기
+SELECT  MOD(10, 3)
+FROM    DUAL;
